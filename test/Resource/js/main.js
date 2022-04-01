@@ -12,3 +12,14 @@ $("#table").DataTable({
         zeroRecords: "Không có kết quả để hiển thị",
     },
 });
+URL = window.location.href
+var newURL = URL.split('/');
+newURL = newURL[newURL.length - 1]
+let arr = $("a.nav-link").toArray()
+arr.forEach(element => {
+    let a = element.href.split('/')
+    a = a[a.length - 1]
+    console.log(a == newURL)
+    if (a == newURL)
+        element.classList.add("active");
+});

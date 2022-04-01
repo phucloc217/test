@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require_once("template/link-file.php") ?>
-    <title>Document</title>
+    <title>Môn học</title>
 </head>
 
 <body>
@@ -32,7 +32,7 @@
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal"> Thêm </button>
             </div>
         </div>
-        <div class="row table-responsive mt-5">
+        <div class="row table-responsive mt-5 mb-5">
             <div class="col">
                 <table id="table" class="table shadow-sm">
                     <thead>
@@ -54,7 +54,7 @@
                                     <td><?php echo $v['tenmh'] ?></td>
                                     <td><?php echo $v['stc'] ?></td>
                                     <td>
-                                        <button class="btn btn-sm btn-warning">Sửa</button>
+                                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#addModal" data-bs-whatever="<?php echo $v['mamh'] ?>">Sửa</button>
                                         <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#modal1" data-bs-whatever="<?php echo $v['mamh'] ?>">Xóa</button>
                                     </td>
                                 </tr>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
-                    <button type="submit" name="addSubject" form="SubjectForm" class="btn btn-primary">Lưu </button>
+                    <button type="submit" name="addSubject" form="SubjectForm" class="btn btn-primary" id="save">Lưu </button>
                 </div>
             </div>
         </div>

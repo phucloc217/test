@@ -1,0 +1,8 @@
+.ui-front {
+    z-index: 9999999 !important;
+}
+
+select,
+option {
+    text-align: left !important;
+}

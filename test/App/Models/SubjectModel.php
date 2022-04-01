@@ -29,4 +29,9 @@ class SubjectModel extends Model
         $sql="DELETE FROM `monhoc` WHERE `monhoc`.`mamh` = ?";
         return $this->query($sql,array($code));
     }
+    public function updateSubject($code,$name,$credits,$oldcode)
+    {
+        $sql=" UPDATE `monhoc` SET `mamh`= ?, `tenmh` = ?, `stc` = ? WHERE `monhoc`.`mamh` = ?";
+        return $this->query($sql,array($code,$name,$credits,$oldcode));
+    }
 }

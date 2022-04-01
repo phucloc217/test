@@ -55,8 +55,8 @@
                                     <td><?php echo $v['sdt'] ?></td>
                                     <td><?php echo $v['diachi'] ?></td>
                                     <td>
-                                        <button class="btn btn-sm btn-warning">Sửa</button>
-                                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#modal1" data-bs-whatever="<?php echo $v['id'] ?>">Xóa</button>
+                                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#addModal" data-bs-whatever="<?php echo $v['id'] ?>">Sửa</button>
+                                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#modal1" data-bs-whatever="<?php echo $v['id'] ?> - <?php echo $v['tengv'] ?>">Xóa</button>
                                     </td>
                                 </tr>
                         <?php
@@ -97,7 +97,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
-                    <button type="submit" name="addTeacher" form="TeacherForm" class="btn btn-primary">Lưu </button>
+                    <button type="submit" id="save" name="addTeacher" form="TeacherForm" class="btn btn-primary">Lưu </button>
                 </div>
             </div>
         </div>
