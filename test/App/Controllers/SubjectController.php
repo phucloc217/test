@@ -17,7 +17,6 @@ class SubjectController extends Controller
     }
     public function create()
     {
-        $data = array();
         if (isset($_POST['addSubject'])) {
             if ($_POST['code'] == "" || !isset($_POST['code'])) {
                 $_SESSION['message'] = "Bạn phải nhập vào mã môn học";
@@ -27,11 +26,9 @@ class SubjectController extends Controller
                 $_SESSION['message'] = "Bạn phải nhập vào số tín chỉ";
             } else if (!is_numeric($_POST['credits'])) {
                 $_SESSION['message'] = "Số tín chỉ phải là số!";
-            }else if($this->u->getSubjectById($_POST['code']))
-            {
-                $_SESSION['message'] = "Mã môn học đã tồn tại!";    
-            }
-            else {
+            } else if ($this->u->getSubjectById($_POST['code'])) {
+                $_SESSION['message'] = "Mã môn học đã tồn tại!";
+            } else {
                 if ($this->u->insertSubject($_POST['code'], $_POST['name'], $_POST['credits']) != null) {
                     $_SESSION['message-success'] = "Thêm thành công!";
                 } else {
@@ -39,6 +36,15 @@ class SubjectController extends Controller
                 }
             }
         }
+        return header("location:index.php?ctrl=Subject&func=index");
+    }
+    public function delete($code)
+    {
+        $this->u->deleteSubject($code);
+        if ($this->u->getNumRow() > 0) {
+            $_SESSION['message-success'] = "Xóa thành công!";
+        } else
+            $_SESSION['message'] = "Xóa không thành công!";
         return header("location:index.php?ctrl=Subject&func=index");
     }
 }

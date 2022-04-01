@@ -9,10 +9,10 @@
           <a class="nav-link active" aria-current="page" href="#">Lớp học</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Môn học</a>
+          <a class="nav-link" href="index.php?ctrl=Subject&func=index">Môn học</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Giảng viên</a>
+          <a class="nav-link" href="index.php?ctrl=Teacher&func=index">Giảng viên</a>
         </li>
        
       </ul>

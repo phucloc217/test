@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require_once("template/link-file.php") ?>
-    <title>Document</title>
+    <title>Giảng viên</title>
 </head>
 
 <body>
@@ -37,31 +37,33 @@
                 <table id="table" class="table shadow-sm">
                     <thead>
                         <th>#</th>
-                        <th>Mã môn học</th>
-                        <th>Tên môn học</th>
-                        <th>Số tín chỉ</th>
+                        <th>Mã giảng viên</th>
+                        <th>Tên giảng viên</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
                         <th>Thao tác</th>
                     </thead>
                     <tbody>
-
-                        <?php
-                        if (isset($listSubject)) {
+                    <?php
+                        if (isset($listTeacher)) {
                             $i = 0;
-                            foreach ($listSubject as $k => $v) { ?>
+                            foreach ($listTeacher as $k => $v) { ?>
                                 <tr>
                                     <td><?php echo ++$i; ?></td>
-                                    <td><?php echo $v['mamh'] ?></td>
-                                    <td><?php echo $v['tenmh'] ?></td>
-                                    <td><?php echo $v['stc'] ?></td>
+                                    <td><?php echo $v['id'] ?></td>
+                                    <td><?php echo $v['tengv'] ?></td>
+                                    <td><?php echo $v['sdt'] ?></td>
+                                    <td><?php echo $v['diachi'] ?></td>
                                     <td>
                                         <button class="btn btn-sm btn-warning">Sửa</button>
-                                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#modal1" data-bs-whatever="<?php echo $v['mamh'] ?>">Xóa</button>
+                                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#modal1" data-bs-whatever="<?php echo $v['id'] ?>">Xóa</button>
                                     </td>
                                 </tr>
                         <?php
                             }
                         }
                         ?>
+                     
                     </tbody>
                 </table>
             </div>
@@ -72,29 +74,30 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addModalLabel">Thêm môn học</h5>
+                    <h5 class="modal-title" id="addModalLabel">Thêm giảng viên</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="index.php?ctrl=Subject&func=create" id="SubjectForm" class="needs-validation">
+                    <form method="POST" action="index.php?ctrl=Teacher&func=create" id="TeacherForm" class="needs-validation">
                         <div class="mb-3 has-validation">
-                            <label for="code" class="form-label">Mã môn học</label>
-                            <input type="text" class="form-control" id="code" name="code" autocomplete="new-password" required>
-                        </div>
-                        <div class="mb-3 has-validation">
-                            <label for="name" class="form-label">Tên môn học</label>
+                            <label for="name" class="form-label">Tên giảng viên</label>
                             <input type="text" class="form-control" id="name" name="name" autocomplete="new-password" required>
                         </div>
                         <div class="mb-3 has-validation">
-                            <label for="credits" class="form-label">Số tín chỉ</label>
-                            <input type="number" class="form-control" id="credits" name="credits" autocomplete="new-password" required>
+                            <label for="phone" class="form-label">Số điện thoại</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" autocomplete="new-password" required>
                         </div>
+                        <div class="mb-3 has-validation">
+                            <label for="addr" class="form-label">Địa chỉ</label>
+                            <textarea type="text" class="form-control" id="addr" name="addr" autocomplete="new-password" ></textarea>
+                        </div>
+                        
 
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
-                    <button type="submit" name="addSubject" form="SubjectForm" class="btn btn-primary">Lưu </button>
+                    <button type="submit" name="addTeacher" form="TeacherForm" class="btn btn-primary">Lưu </button>
                 </div>
             </div>
         </div>
@@ -120,7 +123,7 @@
   </div>
 </div>
 
-    <script src="Resource/js/Subject.js"></script>
+    <script src="Resource/js/Teacher.js"></script>
     <?php require_once("template/link-file-footer.php") ?>
 </body>
 

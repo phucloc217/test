@@ -6,7 +6,7 @@ modal1.addEventListener('show.bs.modal', function(event) {
     var recipient = button.getAttribute('data-bs-whatever')
     var modalTitle = modal1.querySelector('.modal-title')
     var text = modal1.querySelector("p");
-    text.innerText = "Bạn có chắc muốn xóa môn học " + recipient + " không ?"
-    modalTitle.textContent = 'Xóa môn học ' + recipient + '?'
+    text.innerText = "Bạn có chắc muốn giảng viên " + recipient + " không ?"
+    modalTitle.textContent = 'Xóa giảng viên ' + recipient + '?'
     $("#deleteSubject").attr("href", "index.php?ctrl=Subject&func=delete&id=" + recipient);
 })
