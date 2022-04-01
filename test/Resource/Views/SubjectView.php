@@ -11,8 +11,24 @@
 <body>
     <?php require_once("template/navbar.php") ?>
     <div class="container">
-        <div class="row pt-3 ">
-            <div class="col d-flex flex-row-reverse">
+        <div class="row pt-3 h-auto">
+            <div class="col-8 p-0">
+                <?php if (isset($_SESSION['message'])) { ?>
+                    <div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
+                        <?php echo $_SESSION['message'];
+                        unset($_SESSION['message']);  ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php } ?>
+                <?php if (isset($_SESSION['message-success'])) { ?>
+                    <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+                        <?php echo $_SESSION['message-success'];
+                        unset($_SESSION['message-success']);  ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php } ?>
+            </div>
+            <div class="col-4 d-flex flex-row-reverse">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal"> Thêm </button>
             </div>
         </div>
@@ -39,7 +55,7 @@
                                     <td><?php echo $v['stc'] ?></td>
                                     <td>
                                         <button class="btn btn-sm btn-warning">Sửa</button>
-                                        <button class="btn btn-sm btn-danger">Xóa</button>
+                                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#modal1" data-bs-whatever="<?php echo $v['mamh'] ?>">Xóa</button>
                                     </td>
                                 </tr>
                         <?php
@@ -60,33 +76,51 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" id="SubjectForm">
-                        <div class="mb-3">
+                    <form method="POST" action="index.php?ctrl=Subject&func=create" id="SubjectForm" class="needs-validation">
+                        <div class="mb-3 has-validation">
                             <label for="code" class="form-label">Mã môn học</label>
-                            <input type="text" class="form-control" id="code" name="code" autocomplete="new-password">
+                            <input type="text" class="form-control" id="code" name="code" autocomplete="new-password" required>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 has-validation">
                             <label for="name" class="form-label">Tên môn học</label>
-                            <input type="text" class="form-control" id="name" name="name" autocomplete="new-password">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
+                            <input type="text" class="form-control" id="name" name="name" autocomplete="new-password" required>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 has-validation">
                             <label for="credits" class="form-label">Số tín chỉ</label>
-                            <input type="text" class="form-control" id="credits" name="credits" autocomplete="new-password">
+                            <input type="number" class="form-control" id="credits" name="credits" autocomplete="new-password" required>
                         </div>
 
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
-                    <button type="submit" form="SubjectForm" class="btn btn-primary">Lưu </button>
+                    <button type="submit" name="addSubject" form="SubjectForm" class="btn btn-primary">Lưu </button>
                 </div>
             </div>
         </div>
     </div>
 
+
+    <!-- MODAL 1-->
+    <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <a href="#" type="button" class="btn btn-danger" id="deleteSubject">Xóa</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script src="Resource/js/Subject.js"></script>
     <?php require_once("template/link-file-footer.php") ?>
 </body>
 
